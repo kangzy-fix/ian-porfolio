@@ -11,6 +11,7 @@ export const projectsData = [
     title: 'Car Enthusiast Kenya',
     category: 'Web Application',
     img: WebImage2,
+    liveLink: 'https://carenthusiastkenya.co.ke/',
     ProjectHeader: {
       title: 'Project Management UI - From Context',
       publishDate: 'Jul 26, 2021',
@@ -26,6 +27,7 @@ export const projectsData = [
     title: 'Realtor Clone App',
     category: 'Mobile Application',
     img: MobileImage2,
+    liveLink: 'https://realtor-app-clone.vercel.app/',
     style: {
       width: '200px',
       height: 'auto',
@@ -36,6 +38,7 @@ export const projectsData = [
     title: 'Safari Boys',
     category: 'Web Application',
     img: UIImage1,
+    liveLink: 'https://safari.fixafrica.co.ke/',
     style: {
       width: '200px',
       height: 'auto',
@@ -46,6 +49,7 @@ export const projectsData = [
     title: 'Moringa School Alumni',
     category: 'Web Application',
     img: UIImage2,
+    liveLink: 'https://moringa-alumni.vercel.app/',
     style: {
       width: '200px',
       height: 'auto',
@@ -56,6 +60,7 @@ export const projectsData = [
     title: 'Car enthusiast Visualizer',
     category: 'Mobile Application',
     img: MobileImage1,
+    liveLink: 'https://car-enthusiasts-visualizer.netlify.app/',
     style: {
       width: '200px',
       height: 'auto',
@@ -66,6 +71,7 @@ export const projectsData = [
     title: 'Fix Moti`s',
     category: 'Web Application',
     img: WebImage1,
+    liveLink: 'https://fix-motis-gallery.vercel.app/',
     style: {
       width: '200px',
       height: 'auto',
