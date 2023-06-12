@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Button from '../reusable/Button';
 import FormInput from '../reusable/FormInput';
+import $ from 'jquery';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -16,32 +19,40 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('https://carenthusiastkenya.co.ke/ianoemail.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData) // Send the form data as JSON
-      });
+    const form = document.querySelector('#register');
+    const formData = new FormData(form);
+    const register = Object.fromEntries(formData.entries());
 
-      if (response.ok) {
-        console.log('Email sent successfully!');
-        // Reset the form after successful submission
-        setFormData({
-          name: '',
-          email: '',
-          message: ''
-        });
-      } else {
-        console.error('Failed to send email.');
+    $.ajax({
+      type: 'post',
+      url: 'https://carenthusiastkenya.co.ke/ianoemail.php',
+      data: register,
+      success: function(response) {
+        console.log(response);
+
+        if (response.trim() === '1') {
+          toast.success('Email sent successfully!', {
+            onClose: () => {
+              setFormData({
+                name: '',
+                email: '',
+                message: ''
+              });
+              form.reset();
+            }
+          });
+        } else {
+          toast.error('Failed to send email.');
+        }
+      },
+      error: function(error) {
+        console.error('Error:', error);
+        toast.error('An error occurred.');
       }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    });
   };
 
   return (
@@ -50,6 +61,7 @@ const ContactForm = () => {
         <form
           onSubmit={handleSubmit}
           className="max-w-xl m-4 p-6 sm:p-10 bg-secondary-light dark:bg-secondary-dark rounded-xl shadow-xl text-left"
+          id="register"
         >
           <p className="font-general-medium text-primary-dark dark:text-primary-light text-2xl mb-8">
             Contact Form
